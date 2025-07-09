@@ -1,0 +1,75 @@
+stages:
+  - sca
+  - build
+  - test
+  - coverage
+  - docs
+  - pages
+
+sca:
+  stage: sca
+  image: python:3.12
+  script:
+    - pip install .[sca]
+    - pylint src/mypackage
+  tags: [python]
+
+build:
+  stage: build
+  image: python:3.12
+  needs: [sca]
+  script:
+    - pip install build
+    - python -m build
+  artifacts:
+    paths:
+      - dist/
+  tags: [python]
+
+test:
+  stage: test
+  image: python:3.12
+  needs: [build]
+  script:
+    - pip install .[test]
+    - pytest
+  tags: [python]
+
+coverage:
+  stage: coverage
+  image: python:3.12
+  needs: [test]
+  script:
+    - pip install .[test]
+    - pytest --cov=src/mypackage --cov-report=xml
+    - codecov
+  tags: [python]
+  dependencies:
+    - test
+  artifacts:
+    reports:
+      cobertura: coverage.xml
+    paths:
+      - coverage.xml
+
+docs:
+  stage: docs
+  image: quarto-dev/quarto:1.4.550
+  needs: [coverage]
+  script:
+    - quarto render docs
+  artifacts:
+    paths:
+      - docs/_site/
+  tags: [python]
+
+pages:
+  stage: pages
+  needs: [docs]
+  script:
+    - mv docs/_site public
+  artifacts:
+    paths:
+      - public
+  only:
+    - main
