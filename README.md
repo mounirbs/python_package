@@ -11,9 +11,9 @@ package-template/
 ├── docs/
 │   ├── index.md
 │   └── installation.md
-│   └── development.md
-│   └── api.md
 │   └── usage.md
+│   └── cicd.md
+│   └── doc_generation.md
 ├── src/
 │   └── mypackage/
 │       ├── __init__.py
@@ -23,13 +23,13 @@ package-template/
 │   ├── __init__.py
 │   └── test_math_ops.py
 │
-├── example/
+├── examples/
 │   └── example_usage.py
 │
 ├── README.md
 ├── LICENSE
 ├── pyproject.toml
-├── setup.cfg
+├── _quarto.yml
 └── MANIFEST.in
 ```
 
