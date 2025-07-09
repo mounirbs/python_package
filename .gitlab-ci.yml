@@ -38,19 +38,20 @@ test:
 coverage:
   stage: coverage
   image: python:3.12
-  needs: [test]
+  needs: [build]
   script:
     - pip install .[test]
-    - pytest --cov=src/mypackage --cov-report=xml
-    - codecov
+    #- pytest --cov=src/mypackage --cov-report=xml
+    - pytest --cov=src/mypackage
+    #- codecov
   tags: [python]
   dependencies:
     - test
-  artifacts:
-    reports:
-      cobertura: coverage.xml
-    paths:
-      - coverage.xml
+  #artifacts:
+    #reports:
+      #cobertura: coverage.xml
+    #paths:
+      #- coverage.xml
 
 docs:
   stage: docs
