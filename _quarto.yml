@@ -1,0 +1,36 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "mypackage Documentation"
+  search: true
+  navbar:
+    left:   
+      - text: Home
+        file: docs/index.md
+      - text: Installation
+        file: docs/installation.md
+      - text: Usage
+        file: docs/usage.md
+      - text: CI/CD
+        file: docs/cicd.md
+      - text: Generating Documentation
+        file: docs/doc_genration.md
+    right:
+      - text: API Reference
+        file: docs/reference/index.qmd
+
+format:
+  html:
+    theme: cosmo
+
+# Include all .md and .qmd files from docs/
+files:
+  - docs/**/*.md
+  - docs/**/*.qmd
+
+# Generate API documentation from Python docstrings
+quartodoc:
+  dir: docs/reference
+  package: mypackage

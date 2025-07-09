@@ -33,80 +33,17 @@ package-template/
 └── MANIFEST.in
 ```
 
-## Linting (Static Code Analysis)
+## Contents
 
-```sh
-python -m pip install .[sca]
-python -m pylint src/mypackage
-```
-
-## Build (Wheel)
-
-```sh
-python -m pip install build
-python -m build
-```
-
-This will generate a `.whl` file in the `dist/` directory.
-
-## Install from Wheel
-
-```sh
-python -m pip install dist/mypackage-*.whl
-```
-
-## Testing
-
-```sh
-python -m pip install .[test]
-python -m pytest
-```
-
-## Documentation
-
-To generate HTML documentation from the `docs` folder using [Quarto](https://quarto.org):
-Adjust _quarto.yml file under docs folder.
-
-```sh
-python -m pip install quarto-cli  # or follow Quarto installation instructions for your OS
-quarto render docs
-```
-
-The generated HTML documentation will be available in the `docs/_site` directory.
-
-## Example
-
-You can run the example script without installing the package:
-
-```sh
-python -m example/example_usage.py
-```
-
-## Usage
-
-```python
-import pandas as pd
-from mypackage import add, subtract, multiply, divide
-
-df1 = pd.DataFrame([[1, 2], [3, 4]])
-df2 = pd.DataFrame([[5, 6], [7, 8]])
-
-print(add(df1, df2))
-print(subtract(df1, df2))
-print(multiply(df1, df2))
-print(divide(df1, df2))
-```
+- [Installation](docs/installation.md)
+- [Usage](docs/usage.md)
+- [CI/CD](docs/cicd.md)
+- [Generating Documentation](docs/doc_genration.md)
 
 ## CI/CD
 
-A GitLab/GitHub CI/CD pipeline is provided to run static code analysis, build, test, and measure test coverage.
+A GitLab/GitHub CI/CD pipeline is provided to run static code analysis, build, test, measure test coverage, generate documentation, and deploy documentation to GitLab Pages or GitHub Pages.
 
-## Test Coverage with Codecov
+## Contributing
 
-Test coverage is automatically reported to [Codecov](https://codecov.io/) via the CI/CD pipeline.
-To run coverage locally and upload (requires CODECOV_TOKEN):
-
-```sh
-python -m pytest --cov=src/mypackage --cov-report=xml
-python -m codecov --file=coverage.xml
-```
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

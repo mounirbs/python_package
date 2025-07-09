@@ -75,4 +75,6 @@ Desktop.ini
 .env.*
 
 # Quarto
-docs/_site/
+_site/
+/.quarto/
+objects.json

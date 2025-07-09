@@ -58,17 +58,18 @@ docs:
   image: quarto-dev/quarto:1.4.550
   needs: [coverage]
   script:
-    - quarto render docs
+    - quartodoc build
+    - quarto render
   artifacts:
     paths:
-      - docs/_site/
+      - _site/
   tags: [python]
 
 pages:
   stage: pages
   needs: [docs]
   script:
-    - mv docs/_site public
+    - mv _site public
   artifacts:
     paths:
       - public

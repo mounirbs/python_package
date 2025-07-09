@@ -39,6 +39,11 @@ test = [
     "pytest-cov",
     "codecov"
 ]
+doc = [
+    "quarto",
+    "quarto-cli",
+    "quartodoc"    
+]
 
 [tool.setuptools]
 package-dir = {"" = "src"}
