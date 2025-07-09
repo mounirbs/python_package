@@ -58,7 +58,7 @@ jobs:
   coverage:
     name: Coverage
     runs-on: ubuntu-latest
-    needs: test
+    needs: build
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
@@ -86,9 +86,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Set up Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
-        with:
-          version: 1.4.550
+        uses: quarto-dev/quarto-actions/setup@v2        
       - name: Render docs
         run: quarto render docs
       - name: Upload docs site
