@@ -92,9 +92,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Set up Quarto
-        uses: quarto-dev/quarto-actions/setup@v2        
+        run: pip install .[doc]
       - name: Generate reference qmd files from docstrings
-        run: quarto build
+        run: quartodoc build
       - name: Render docs and reference
         run: quarto render      
       - name: Upload docs site
