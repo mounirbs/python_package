@@ -35,10 +35,10 @@ package-template/
 
 ## Contents
 
-- [Installation](docs/installation.md)
-- [Usage](docs/usage.md)
-- [CI/CD](docs/cicd.md)
-- [Generating Documentation](docs/doc_genration.md)
+- [Installation](docs/en/installation.md)
+- [Usage](docs/en/usage.md)
+- [CI/CD](docs/en/cicd.md)
+- [Generating Documentation](docs/en/doc_generation.md)
 
 ## CI/CD
 
