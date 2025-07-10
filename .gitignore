@@ -74,7 +74,15 @@ Desktop.ini
 .env
 .env.*
 
-# Quarto
-_site/
+# Quarto documentation
+docs/_site/
+docs/reference/
 /.quarto/
 objects.json
+
+# Sphinx documentation
+docs/_site/
+docs/*.rst
+docs/api/
+
+/.quarto/

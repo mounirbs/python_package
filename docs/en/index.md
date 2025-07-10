@@ -6,8 +6,7 @@
 
 ## Contents
 
-- [CHANGELOG](../CHANGELOG.md)
-- [Installation](installation.md)
-- [Usage](usage.md)
-- [CI/CD](cicd.md)
-- [Generating Documentation](doc_genration.md)
+### [Installation](installation.md)
+### [Usage](usage.md)
+### [CI/CD](cicd.md)
+### [Generating Documentation](doc_generation.md)

@@ -39,10 +39,16 @@ test = [
     "pytest-cov",
     "codecov"
 ]
-doc = [
-    "quarto",
-    "quarto-cli",
-    "quartodoc"    
+doc = [    
+    # Enable if using Sphinx for documentation
+    "sphinx",
+    "myst-parser", #allows Sphinx to parse Markdown (.md) files
+    "sphinx-autodoc-typehints", #improves type hint rendering in docstrings
+    
+    # Enable if using Quarto for documentation
+    #"quarto",
+    #"quarto-cli",
+    #"quartodoc",
 ]
 
 [tool.setuptools]

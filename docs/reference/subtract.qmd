@@ -1,4 +1,0 @@
-# subtract { #mypackage.subtract }
-
-`subtract`
-

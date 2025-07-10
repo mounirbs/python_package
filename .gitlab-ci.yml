@@ -55,6 +55,7 @@ coverage:
 
 docs:
   stage: docs
+  # TODO ENABLE SPHINX FOR GITLAB
   image: quarto-dev/quarto:1.4.550
   needs: [coverage]
   script:
@@ -62,7 +63,7 @@ docs:
     - quarto render
   artifacts:
     paths:
-      - _site/
+      - docs/_site/
   tags: [python]
 
 pages:

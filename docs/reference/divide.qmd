@@ -1,4 +1,0 @@
-# divide { #mypackage.divide }
-
-`divide`
-

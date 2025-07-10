@@ -1,6 +1,6 @@
 project:
   type: website
-  output-dir: _site
+  output-dir: docs/_site
 
 website:
   title: "mypackage Documentation"
@@ -8,15 +8,15 @@ website:
   navbar:
     left:   
       - text: Home
-        file: docs/index.md
+        file: docs/en/index.md
       - text: Installation
-        file: docs/installation.md
+        file: docs/en/installation.md
       - text: Usage
-        file: docs/usage.md
+        file: docs/en/usage.md
       - text: CI/CD
-        file: docs/cicd.md
+        file: docs/en/cicd.md
       - text: Generating Documentation
-        file: docs/doc_genration.md
+        file: docs/en/doc_generation.md
     right:
       - text: API Reference
         file: docs/reference/index.qmd
