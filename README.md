@@ -1,6 +1,6 @@
 # mypackage
 
-[![codecov](https://codecov.io/gh/yourusername/mypackage/branch/main/graph/badge.svg)](https://codecov.io/gh/yourusername/mypackage)
+[![codecov](https://codecov.io/gh/mounirbs/python_package/branch/main/graph/badge.svg?token=36IFV7Z311)](https://codecov.io/gh/mounirbs/python_package)
 
 Basic arithmetic operations on pandas DataFrames.
 
