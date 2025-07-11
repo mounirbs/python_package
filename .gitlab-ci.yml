@@ -1,3 +1,11 @@
+before_script:
+  - python --version
+  - pip config set global.index-url https://${ARTIFACTORY_USER}:${ARTIFACTORY_PASS}@${ARTIFACTORY_REGISTRY}/artifactory/api/pypi/pypi-remote/simple
+  - pip install -U virtualenv
+  - virtualenv venv
+  - source venv/bin/activate
+  - pip install --upgrade pip
+
 stages:
   - sca
   - build
@@ -9,10 +17,10 @@ stages:
 sca:
   stage: sca
   image: python:3.12
+  needs: []
   script:
     - pip install .[sca]
     - pylint src/mypackage
-  tags: [python]
 
 build:
   stage: build
@@ -23,8 +31,7 @@ build:
     - python -m build
   artifacts:
     paths:
-      - dist/
-  tags: [python]
+      - dist/*.whl
 
 test:
   stage: test
@@ -33,20 +40,19 @@ test:
   script:
     - pip install .[test]
     - pytest
-  tags: [python]
 
 coverage:
   stage: coverage
   image: python:3.12
-  needs: [build]
+  needs: [test]
   script:
     - pip install .[test]
+    # Output coverage report to an xml file
     #- pytest --cov=src/mypackage --cov-report=xml
+    # Output coverage report to the console
     - pytest --cov=src/mypackage
-    #- codecov
-  tags: [python]
-  dependencies:
-    - test
+    # upload coverage to codecov only if your repository is public(available on GitHub for example)
+    #- codecov  
   #artifacts:
     #reports:
       #cobertura: coverage.xml
@@ -55,22 +61,29 @@ coverage:
 
 docs:
   stage: docs
-  # TODO ENABLE SPHINX FOR GITLAB
-  image: quarto-dev/quarto:1.4.550
+  image: python:3.12
   needs: [coverage]
   script:
-    - quartodoc build
-    - quarto render
+    - pip install .[doc]
+    # Generate documentation from docstrings
+    - sphinx-apidoc -o docs/api src/mypackage
+    # Build the full HTML documentation
+    - cp ./sphinx/index.rst ./docs/
+    - sphinx-build --conf-dir sphinx -b html docs docs/_site
   artifacts:
     paths:
       - docs/_site/
-  tags: [python]
 
 pages:
   stage: pages
+  when: manual
+  before_script: []
+  # Make available the docs/_site/ artifact from the docs stage 
+  dependencies:
+    - docs
   needs: [docs]
   script:
-    - mv _site public
+    - mv docs/_site public
   artifacts:
     paths:
       - public
